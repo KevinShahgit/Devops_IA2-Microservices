@@ -15,11 +15,12 @@ public class MovieRatingResource {
         return new Rating(movieId, rate);
     }
 
-    @RequestMapping("/user/{userId}")
+    
+}
+
+@RequestMapping("/user/{userId}")
     public UserRating getUserRatings(@PathVariable("userId") String userId) {
         UserRating userRating = new UserRating();
         userRating.initData(userId);
         return userRating;
-
-    }
 }
