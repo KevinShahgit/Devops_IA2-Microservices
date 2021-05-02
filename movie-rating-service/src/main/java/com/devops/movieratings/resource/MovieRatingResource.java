@@ -8,19 +8,21 @@ import com.devops.movieratings.model.Rating;
 import com.devops.movieratings.model.UserRating;
 
 @RestController
-@RequestMapping("/rating")
+
 public class MovieRatingResource {
-    @RequestMapping("/{movieId}/{rate}")
+    @RequestMapping("rating/{movieId}/{rate}")
     Rating getMovieRating(@PathVariable("movieId") String movieId, @PathVariable("rate") int rate) {
         return new Rating(movieId, rate);
+    }
+    
+    @RequestMapping("/user/{userId}")
+    public UserRating getUserRatings(@PathVariable("userId") String userId) {
+        UserRating userRating = new UserRating();
+        userRating.initData(userId);
+        return userRating;
     }
 
     
 }
 
-@RequestMapping("/user/{userId}")
-    public UserRating getUserRatings(@PathVariable("userId") String userId) {
-        UserRating userRating = new UserRating();
-        userRating.initData(userId);
-        return userRating;
-}
+
